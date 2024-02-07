@@ -1,7 +1,7 @@
 import pandas as pd
 from sqlalchemy import create_engine
 
-
+# Assuming 'alemeno' is the database name, username, and password
 db_name = 'alemeno'
 db_user = 'alemeno'
 db_pass = 'alemeno'
@@ -36,8 +36,3 @@ def load_data(file_path, table_name):
         return f"Data from {file_path} successfully loaded into {table_name} table."
     except Exception as e:
         return f"An error occurred: {e}"
-
-
-
-load_loan_data_result = load_data(loan_data_file, 'credit_loan')
-print(load_loan_data_result)
