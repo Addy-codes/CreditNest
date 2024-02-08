@@ -25,7 +25,7 @@ class FillDataView(APIView):
     def get(self, request):
         ingest_data.delay()
         return Response({
-            "doing": True
+            "Data Filled": True
         })
 
 
@@ -69,8 +69,6 @@ class CheckEligibilityView(APIView):
             loan_amount = serializer.validated_data['loan_amount']
             interest_rate = serializer.validated_data['interest_rate']
             tenure = serializer.validated_data['tenure']
-            print("====================================")
-            print(credit_score)
             # Determine loan approval and interest rates
             approval, corrected_interest_rate = utils.check_eligibility(credit_score=credit_score,
                                                                         interest_rate=interest_rate, customer=customer,
