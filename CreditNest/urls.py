@@ -16,11 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from credit.views import RegisterView, CheckEligibilityView, CreateLoanView, ViewLoansView, ViewLoanView, CeleryView
+from credit.views import *
 
 urlpatterns = [
+    path('', Home.as_view()),
     path('admin/', admin.site.urls),
-    path('celery/', CeleryView.as_view()),
+    path('fill-data/', FillDataView.as_view()),
     path('register/', RegisterView.as_view(), name='register'),
     path('check-eligibility/', CheckEligibilityView.as_view()),
     path('create-loan/', CreateLoanView.as_view(), name='create-loan'),

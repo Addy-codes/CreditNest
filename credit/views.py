@@ -13,10 +13,15 @@ from .models import Customer, Loan
 import math
 from .tasks import ingest_data
 from .utils import calculate_remaining_loan_balance
+from django.http import HttpResponse
 
 # Create your views here.
 
-class CeleryView(APIView):
+class Home(APIView):
+    def get(self, request):
+        return HttpResponse("Welcome to the Credit Nest")
+
+class FillDataView(APIView):
     def get(self, request):
         ingest_data.delay()
         return Response({
