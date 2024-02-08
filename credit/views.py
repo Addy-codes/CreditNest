@@ -10,7 +10,7 @@ from rest_framework.response import Response
 from . import utils
 from .serializers import *
 from .models import Customer, Loan
-import math
+import math, random
 from .tasks import ingest_data
 from .utils import calculate_remaining_loan_balance
 from django.http import HttpResponse
@@ -35,14 +35,15 @@ class RegisterView(APIView):
         if serializer.is_valid():
             data = serializer.validated_data
             approved_limit = math.ceil(data['monthly_income'] * 36 / 100000) * 100000
+            customer_id = random.randint(10000, 99999)
             customer = Customer.objects.create(
+                customer_id=customer_id,
                 first_name=data['first_name'],
                 last_name=data['last_name'],
                 phone_number=data['phone_number'],
                 age=data['age'],
                 monthly_salary=data['monthly_income'],
                 approved_limit=approved_limit,
-                current_debt=0
             )
             return Response({
                 'customer_id': customer.customer_id,
@@ -68,7 +69,8 @@ class CheckEligibilityView(APIView):
             loan_amount = serializer.validated_data['loan_amount']
             interest_rate = serializer.validated_data['interest_rate']
             tenure = serializer.validated_data['tenure']
-
+            print("====================================")
+            print(credit_score)
             # Determine loan approval and interest rates
             approval, corrected_interest_rate = utils.check_eligibility(credit_score=credit_score,
                                                                         interest_rate=interest_rate, customer=customer,
