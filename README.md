@@ -12,6 +12,20 @@ To get the CreditNest system up and running on your local machine, follow the st
 - Docker
 - Docker Compose
 
+### Screenshots:
+
+![image](https://github.com/Addy-codes/CreditNest/assets/72205091/c2d5ad55-a7c2-4a3b-89ce-3118d6076871)
+
+
+![image](https://github.com/Addy-codes/CreditNest/assets/72205091/fbe919cf-759a-45ed-911e-c964de505f6c)
+
+![image](https://github.com/Addy-codes/CreditNest/assets/72205091/d7c8ea4c-d567-453f-8eac-56053a788351)
+
+
+![image](https://github.com/Addy-codes/CreditNest/assets/72205091/4b91d9f7-4736-49ac-917a-0d0d9824c1ae)
+
+
+
 ### Installation
 
 1. Clone the repository to your local machine.
